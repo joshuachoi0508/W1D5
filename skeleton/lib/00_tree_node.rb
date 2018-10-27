@@ -37,11 +37,17 @@ class PolyTreeNode
     child_node.parent = nil if child_node.parent    
   end
   
+  def inspect
+    "<PolyTreeNode @value= #{@value}>"
+  end
+  
+  
   def dfs(target_value)
     return self if self.value == target_value
-    
+    byebug
     self.children.each do |child|
       search_result = child.dfs(target_value)
+      
       return search_result unless search_result.nil?
     end
     nil
